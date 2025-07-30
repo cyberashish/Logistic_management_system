@@ -1,0 +1,126 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: 245, 245, 242;
+  --primary: 23, 179, 106;
+  --subtle-primary: 245, 247 , 249;
+  --light-primary: 38 83 83; 
+  --muted: 61, 67, 74 , 0.9;
+  --lightgray: 134, 144, 156;
+  --dark: 1, 1, 1;
+  --border: 227 , 227 , 227;
+  --subtlebg: 244 , 247 , 249; 
+  --secondary: 0, 211, 125;
+  --tertiary: 122, 112, 186;
+  --brown: 215, 119, 72;
+  --pink: 201, 94, 158;
+  --warning: 250, 196, 20;
+  --success: 54, 201, 108;
+  --error: 207, 10, 46;
+  --surface: 255, 255, 255;
+  --subtlegray: 141, 141, 141;
+}
+
+@theme inline {
+  --color-background: rgba(var(--background));
+  --color-primary: rgba(var(--primary));
+  --color-subtleprimary: rgba(var(--subtle-primary));
+  --color-lightprimary: rgba(var(--light-primary));
+  --color-muted: rgba(var(--muted));
+  --color-lightgray: rgba(var(--lightgray));
+  --color-dark: rgba(var(--dark));
+  --color-border: rgba(var(--border));
+  --color-subtlebg: rgba(var(--subtlebg));
+  --color-secondary: rgba(var(--secondary));
+  --color-tertiary: rgba(var(--tertiary));
+  --color-brown: rgba(var(--brown));
+  --color-pink: rgba(var(--pink));
+  --color-warning: rgba(var(--warning));
+  --color-success: rgba(var(--success));
+  --color-error: rgba(var(--error));
+  --color-surface: rgba(var(--surface));
+  --color-subtlegray: rgba(var(--subtlegray));
+
+
+  --animate-wiggle: wiggle 1s linear infinite;
+  --animate-rotate: rotate 6s linear infinite;
+
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+}
+
+.dark {
+  --background: 4, 33 , 20;
+  --surface: 17 61 41;
+  --primary: 23, 179, 106;
+  --dark: 255, 255 , 255;
+  --muted: 255, 255, 255 , 0.7;
+  --lightgray: 255, 255, 255 , 0.4;
+  --subtlebg: 44 , 80 , 80;
+  --subtlegray: 255, 255, 255 , 0.6;
+  --border: 225 , 225 , 225 , 0.2;
+}
+
+/* body {
+  background: var(--color-background);
+} */
+button{
+  cursor: pointer;
+}
+.custom-collapse{
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: all 0.4s ease-in-out;
+}
+.custom-collapse.active{
+  grid-template-rows: 1fr;
+}
+.custom-collapse > div{
+  overflow: hidden;
+}
+button.notification-btn[data-state="open"]{
+  background-color: rgba(var(--primary),0.2) !important;
+  color: var(--color-primary) !important;
+}
+.apexcharts-tooltip{
+  color: var(--color-muted)!important;
+}
+.pulse-1{
+  animation: pulse-tip 2s  infinite;
+  background-color: rgba(var(--primary), 0.6);
+  border-radius: 50%;
+}
+
+@keyframes pulse-tip{
+  0%{
+    transform: scale(1);
+    opacity: 1;
+  }100%{
+    transform: scale(3);
+    opacity: 0
+  }
+}
+
+
+@layer components{
+  body{
+    @apply overflow-x-hidden;
+  }
+}
