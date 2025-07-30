@@ -27,6 +27,9 @@ export default function Header(){
         window.removeEventListener("scroll", handleScroll)
       }
     },[])
+    function generateInvoice(orderId: number) {
+      window.location.href = `/api/generate-invoice?orderId=${encodeURIComponent(orderId)}`;
+    }
     return (
         <>
          <header className={`py-4 px-3 flex items-center justify-between overflow-y-auto backdrop-blur-2xl sticky top-0 z-[9] ${isFixed ? 'shadow-md dark:shadow-none' : ''}`}>
@@ -46,7 +49,7 @@ export default function Header(){
          <img src={"/images/logo/dark_logo.svg"} alt="logo" className="h-7 shrink-0 !w-fit !max-w-fit lg:hidden block" /> 
           <div className="flex items-center gap-2.5">
            <ThemeMode/>
-           <Button>
+           <Button onClick={() => generateInvoice(3456) }  >
              <Icon width={18} height={18} icon="icon-park-outline:download-two" />
             Download
             </Button>

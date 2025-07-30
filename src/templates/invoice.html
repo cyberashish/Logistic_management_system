@@ -1,0 +1,65 @@
+<!-- templates/invoice.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body { font-family: sans-serif; padding: 40px; }
+      .header { display: flex; justify-content: space-between; }
+      .bill-section { margin-top: 30px; display: flex; justify-content: space-between; }
+      .table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+      .table th, .table td { border-bottom: 1px solid #ccc; padding: 10px; text-align: left; }
+      .summary { margin-top: 20px; float: right; }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div>
+        <h2>Need help?</h2>
+        <p>Invoice number: {{invoiceNumber}}</p>
+        <p>Date of issue: {{date}}</p>
+      </div>
+    </div>
+
+    <div class="bill-section">
+      <div>
+        <strong>Bill to:</strong><br />
+        {{customerName}}<br />
+        {{customerAddress}}<br />
+        {{customerEmail}}
+      </div>
+      <div>
+        <strong>Bill from:</strong><br />
+        Lemon Squeezy LLC<br />
+        354 Oyster Point Blvd.<br />
+        South San Francisco, CA 94080<br />
+        United States<br />
+        GST No: 9923USA29003OSK
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ITEM</th><th>QTY</th><th>UNIT PRICE</th><th>TAX</th><th>AMOUNT</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{items}}
+      </tbody>
+    </table>
+
+    <div class="summary">
+      <p>Subtotal: ${{subtotal}}</p>
+      <p>IGST (0.00%): ${{tax}}</p>
+      <p><strong>Invoice Total: ${{total}}</strong></p>
+      <p>Paid: -${{total}}</p>
+      <p><strong>Paid: $0.00</strong></p>
+    </div>
+
+    <div style="margin-top: 100px;">
+      <strong>Payments:</strong><br />
+      ${{total}} payment from {{paymentMethod}}
+    </div>
+  </body>
+</html>
